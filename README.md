@@ -89,7 +89,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - GitHub: [@syed-reza98](https://github.com/syed-reza98)
 - LinkedIn: [Syed Salman Reza](https://linkedin.com/in/syed-salman-reza)
-- Email: syed.reza@example.com
+- Email: syed.reza98@gmail.com
 
 ---
 
