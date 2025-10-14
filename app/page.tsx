@@ -60,7 +60,7 @@ export default function Home() {
         <div className="flex flex-col items-center text-center space-y-8">
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-              Hi, I'm <span className="text-accent">Syed Salman Reza</span>
+              Hi, I&apos;m <span className="text-accent">Syed Salman Reza</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
               Full-Stack Developer passionate about building innovative web applications and contributing to open source
@@ -116,7 +116,7 @@ export default function Home() {
             
             <div className="prose prose-lg max-w-none">
               <p className="text-muted-foreground">
-                I'm a passionate full-stack developer with expertise in building modern web applications using cutting-edge technologies. 
+                I&apos;m a passionate full-stack developer with expertise in building modern web applications using cutting-edge technologies. 
                 With experience across multiple programming languages and frameworks, I love creating elegant solutions to complex problems.
               </p>
               <p className="text-muted-foreground">
@@ -219,7 +219,7 @@ export default function Home() {
             <div className="space-y-4">
               <h2 className="text-3xl md:text-4xl font-bold">Get in Touch</h2>
               <p className="text-muted-foreground text-lg">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+                I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
               </p>
             </div>
 
