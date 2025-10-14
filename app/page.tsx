@@ -225,7 +225,7 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
-                <Link href="mailto:syed.reza@example.com">
+                <Link href="mailto:syed.reza98@gmail.com">
                   <EnvelopeClosedIcon className="mr-2 h-5 w-5" />
                   Email Me
                 </Link>
