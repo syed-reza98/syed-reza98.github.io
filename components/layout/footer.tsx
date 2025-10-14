@@ -58,7 +58,7 @@ export function Footer() {
                 <LinkedInLogoIcon className="h-6 w-6" />
               </Link>
               <Link
-                href="mailto:syed.reza@example.com"
+                href="mailto:syed.salman.reza@gmail.com"
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Email"
               >
