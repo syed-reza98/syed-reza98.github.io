@@ -88,9 +88,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🤝 Connect
 
 - GitHub: [@syed-reza98](https://github.com/syed-reza98)
-- LinkedIn: [Syed Salman Reza](https://linkedin.com/in/syed-salman-reza)
-- Email: syed.reza98@gmail.com
+- LinkedIn: [Syed Salman Reza](https://linkedin.com/in/salman-reza)
+- Email: syed.reza181@gmail.com
 
 ---
 
 Built with ❤️ using Next.js and deployed on GitHub Pages
+
+
