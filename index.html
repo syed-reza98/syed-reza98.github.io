@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Syed Salman Reza — Software Engineer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Syed Salman Reza — full-stack software engineer in Dhaka. Four years of banking systems (ATM EJ extraction, reconciliation, POS firmware); now shipping SaaS, Flutter apps, and AI integrations via CodeStorm Hub. Open to full-time, remote, and freelance work.">
+<link rel="icon" href="/favicon.ico">
+<!-- The Engineer's Ledger · v2 -->
+<style>
+  /* ============ TOKENS ============ */
+  :root {
+    /* light — warm paper ledger */
+    --bg: #F2EDE1;
+    --surface: #FAF7EE;
+    --panel: #16130D;            /* device screen stays dark in both themes */
+    --panel-ink: #FFB000;
+    --panel-dim: #9C7C30;
+    --ink: #1B1710;
+    --ink-2: #59523F;
+    --ink-3: #6E6752;
+    --accent: #855400;           /* amber, darkened for paper contrast (≥4.5:1 on paper) */
+    --accent-strong: #7A4E00;
+    --on-accent: #FFF6E3;
+    --rule: rgba(27, 23, 16, 0.28);
+    --rule-soft: rgba(27, 23, 16, 0.13);
+    --track: rgba(27, 23, 16, 0.12);
+    --band: #E9E1CE;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0C0E11;
+      --surface: #12151A;
+      --panel: #0A0C0F;
+      --panel-ink: #FFB000;
+      --panel-dim: #9C7C30;
+      --ink: #EAE3D0;
+      --ink-2: #A79F8A;
+      --ink-3: #857E6A;
+      --accent: #FFB000;
+      --accent-strong: #FFC341;
+      --on-accent: #171104;
+      --rule: rgba(234, 227, 208, 0.30);
+      --rule-soft: rgba(234, 227, 208, 0.13);
+      --track: rgba(234, 227, 208, 0.14);
+      --band: #14171D;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0C0E11;
+    --surface: #12151A;
+    --panel: #0A0C0F;
+    --panel-ink: #FFB000;
+    --panel-dim: #9C7C30;
+    --ink: #EAE3D0;
+    --ink-2: #A79F8A;
+    --ink-3: #857E6A;
+    --accent: #FFB000;
+    --accent-strong: #FFC341;
+    --on-accent: #171104;
+    --rule: rgba(234, 227, 208, 0.30);
+    --rule-soft: rgba(234, 227, 208, 0.13);
+    --track: rgba(234, 227, 208, 0.14);
+    --band: #14171D;
+  }
+  :root[data-theme="light"] {
+    --bg: #F2EDE1;
+    --surface: #FAF7EE;
+    --panel: #16130D;
+    --panel-ink: #FFB000;
+    --panel-dim: #9C7C30;
+    --ink: #1B1710;
+    --ink-2: #59523F;
+    --ink-3: #6E6752;
+    --accent: #855400;
+    --accent-strong: #7A4E00;
+    --on-accent: #FFF6E3;
+    --rule: rgba(27, 23, 16, 0.28);
+    --rule-soft: rgba(27, 23, 16, 0.13);
+    --track: rgba(27, 23, 16, 0.12);
+    --band: #E9E1CE;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Helvetica Neue", "Segoe UI", Arial, system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--accent-strong); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  .skip {
+    position: absolute; left: -9999px; top: 0;
+    background: var(--accent); color: var(--on-accent); padding: 8px 14px; z-index: 99;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 13px;
+  }
+  .skip:focus { left: 8px; top: 8px; }
+
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+  /* ============ TOP BAR ============ */
+  header.top {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px dashed var(--rule);
+  }
+  .top-in {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding-block: 12px;
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 12.5px; letter-spacing: 0.04em;
+  }
+  .top-id { color: var(--ink-2); white-space: nowrap; }
+  .top-id b { color: var(--ink); font-weight: 700; }
+  .top-right { display: flex; align-items: center; gap: 18px; }
+  nav.top-nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  nav.top-nav a { color: var(--ink-2); text-decoration: none; text-transform: uppercase; padding: 10px 2px; }
+  nav.top-nav a:hover { color: var(--accent); }
+  .chip {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); border: 1px solid var(--accent); border-radius: 999px;
+    padding: 4px 12px; text-decoration: none; white-space: nowrap;
+  }
+  .chip:hover { background: var(--accent); color: var(--on-accent); }
+  .pulse {
+    display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    background: currentColor; margin-right: 6px; vertical-align: 1px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 50% { opacity: 0.35; } }
+
+  /* ============ HERO ============ */
+  .hero { padding-block: 72px 56px; }
+  .eyebrow {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 18px;
+  }
+  .hero h1 {
+    margin: 0 0 10px;
+    font-size: clamp(46px, 9.2vw, 108px);
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+    text-wrap: balance;
+    text-transform: uppercase;
+  }
+  .hero h1 .line { display: block; overflow: hidden; }
+  .hero h1 .line > span { display: inline-block; transform: translateY(110%); animation: rise 0.7s cubic-bezier(.2,.7,.2,1) forwards; }
+  .hero h1 .line:nth-child(2) > span { animation-delay: 0.12s; }
+  @keyframes rise { to { transform: translateY(0); } }
+  .status-line {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin: 18px 0 0;
+  }
+  .hero-sub {
+    max-width: 62ch; color: var(--ink-2); font-size: 18px; margin: 14px 0 30px;
+  }
+  .hero-sub strong { color: var(--ink); font-weight: 600; }
+
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+  .btn {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 12px 22px; text-decoration: none; border-radius: 3px;
+    display: inline-block;
+  }
+  .btn-solid { background: var(--accent); color: var(--on-accent); }
+  .btn-solid:hover { background: var(--accent-strong); color: var(--on-accent); }
+  .btn-ghost { border: 1px solid var(--rule); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ============ EJ TICKER (signature) ============ */
+  .ticker {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 22px 24px 18px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  }
+  .ticker::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,0.028) 0 1px, transparent 1px 3px);
+  }
+  .ticker-head {
+    display: flex; justify-content: space-between; gap: 12px;
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--panel-dim);
+    border-bottom: 1px dashed rgba(255,176,0,0.28);
+    padding-bottom: 10px; margin-bottom: 12px;
+  }
+  .ticker-log {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: clamp(11.5px, 1.5vw, 13.5px);
+    line-height: 1.85;
+    color: var(--panel-ink);
+    min-height: calc(1.85em * 9);
+    margin: 0; white-space: pre-wrap; word-break: break-word;
+  }
+  .ticker-log .dim { color: var(--panel-dim); }
+  .cursor {
+    display: inline-block; width: 0.6em; height: 1.05em;
+    background: var(--panel-ink); vertical-align: text-bottom;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ============ RECORD SECTIONS ============ */
+  section.rec { padding-block: 64px 8px; }
+  .rec-head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+    border-top: 1px dashed var(--rule);
+    padding-top: 14px; margin-bottom: 30px;
+  }
+  .rec-id {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); margin: 0;
+  }
+  .rec-note {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 12px; color: var(--ink-3); text-align: right;
+  }
+  h2.rec-title {
+    font-size: clamp(30px, 4.6vw, 52px); font-weight: 800;
+    letter-spacing: -0.025em; line-height: 1.02; text-transform: uppercase;
+    margin: 0 0 26px; text-wrap: balance;
+  }
+
+  /* about */
+  .about-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; }
+  .about-grid p { margin: 0 0 16px; max-width: 62ch; }
+  .fact-list {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 12.5px; line-height: 2.1; color: var(--ink-2);
+    border-left: 1px dashed var(--rule); padding-left: 20px;
+    margin: 0; list-style: none;
+  }
+  .fact-list b { color: var(--ink); font-weight: 600; }
+  .fact-list .hot { color: var(--accent); }
+
+  /* experience */
+  .xp { border: 1px dashed var(--rule); border-radius: 6px; padding: 26px 28px; margin-bottom: 18px; background: var(--surface); }
+  .xp-top { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; align-items: baseline; margin-bottom: 6px; }
+  .xp h3 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .xp .xp-org { color: var(--accent); }
+  .xp-dates {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 12.5px; color: var(--ink-2); letter-spacing: 0.05em;
+  }
+  .xp ul { margin: 12px 0 0; padding-left: 20px; color: var(--ink-2); }
+  .xp li { margin-bottom: 7px; max-width: 72ch; }
+  .xp li::marker { color: var(--accent); }
+  .balance {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-2); border-top: 1px dashed var(--rule);
+    padding-top: 14px; margin-top: 24px;
+    display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  }
+  .balance .ok { color: var(--accent); }
+
+  /* transactions / projects */
+  details.txn { border-top: 1px dashed var(--rule); }
+  details.txn:last-of-type { border-bottom: 1px dashed var(--rule); }
+  details.txn summary {
+    list-style: none; cursor: pointer;
+    display: grid; grid-template-columns: 92px 1fr auto; gap: 18px; align-items: baseline;
+    padding: 22px 4px;
+  }
+  details.txn summary::-webkit-details-marker { display: none; }
+  details.txn summary:hover { background: var(--rule-soft); }
+  .txn-id {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 12.5px; color: var(--accent); letter-spacing: 0.08em;
+  }
+  .txn-name { font-size: clamp(19px, 2.6vw, 26px); font-weight: 700; letter-spacing: -0.015em; }
+  .txn-name small { display: block; font-size: 13.5px; font-weight: 400; color: var(--ink-2); letter-spacing: 0; margin-top: 3px; }
+  .txn-flip {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 18px; color: var(--ink-3); align-self: center;
+  }
+  details.txn[open] .txn-flip { color: var(--accent); }
+  details.txn[open] .txn-flip::before { content: "−"; }
+  details.txn:not([open]) .txn-flip::before { content: "+"; }
+  .txn-body { padding: 0 4px 30px 110px; }
+  .txn-meta {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 11.5px; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 14px;
+    display: flex; gap: 8px 20px; flex-wrap: wrap;
+  }
+  .txn-meta b { color: var(--ink-2); font-weight: 600; }
+  .txn-body p { margin: 0 0 12px; max-width: 68ch; color: var(--ink-2); }
+  .txn-body p strong { color: var(--ink); font-weight: 600; }
+  .txn-link { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 13px; }
+
+  /* metric bars */
+  .metrics { margin: 18px 0 6px; max-width: 480px; display: grid; gap: 10px; }
+  .metric { display: grid; grid-template-columns: 110px 1fr 64px; gap: 12px; align-items: center; }
+  .metric .m-label {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 11.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-2);
+  }
+  .metric .m-track { display: block; height: 8px; background: var(--track); border-radius: 4px; overflow: hidden; }
+  .metric .m-fill { display: block; height: 100%; background: var(--accent); border-radius: 4px 0 0 4px; }
+  .metric .m-val {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 13px; font-variant-numeric: tabular-nums; text-align: right; color: var(--ink);
+  }
+  .m-cap { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; color: var(--ink-3); margin: 6px 0 0; }
+
+  /* quantum svg */
+  .qsvg { margin: 16px 0 4px; max-width: 420px; }
+  .qsvg svg { width: 100%; height: auto; display: block; }
+  .qsvg .wire { stroke: var(--ink-3); stroke-width: 1.4; }
+  .qsvg .gate { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  .qsvg .gate-label { fill: var(--accent); font: 600 13px ui-monospace, Consolas, monospace; }
+  .qsvg .dot { fill: var(--accent); }
+
+  /* skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--rule-soft); border: 1px dashed var(--rule); border-radius: 6px; overflow: hidden; }
+  .skill-col { background: var(--bg); padding: 22px 20px; }
+  .skill-col h3 {
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 11.5px; letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 12px; font-weight: 600;
+  }
+  .skill-col ul { list-style: none; margin: 0; padding: 0; font-size: 14.5px; color: var(--ink-2); line-height: 2; }
+
+  /* codestorm band */
+  .band { background: var(--band); border: 1px dashed var(--rule); border-radius: 6px; padding: 34px 32px; }
+  .band-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 36px; }
+  .band h3 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 12px; text-transform: uppercase; }
+  .band p { color: var(--ink-2); margin: 0 0 12px; max-width: 58ch; }
+  .band .fact-list { border-color: var(--rule); }
+
+  /* certs */
+  .certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .cert {
+    border: 1px dashed var(--rule); border-radius: 6px; padding: 18px 18px 14px;
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 12.5px; line-height: 1.7; color: var(--ink-2); background: var(--surface);
+  }
+  .cert b { color: var(--ink); display: block; font-weight: 600; }
+  .cert .cert-yr { color: var(--accent); }
+
+  /* writing */
+  .notes { border: 1px dashed var(--rule); border-radius: 6px; padding: 26px 28px; background: var(--surface); }
+  .notes ul { margin: 10px 0 0; padding-left: 20px; color: var(--ink-2); }
+  .notes li { margin-bottom: 6px; }
+  .notes li::marker { color: var(--accent); }
+  .soon {
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-accent);
+    background: var(--accent); border-radius: 3px; padding: 3px 8px; margin-left: 8px;
+    vertical-align: 2px;
+  }
+
+  /* hire */
+  .hire { text-align: left; padding-bottom: 26px; }
+  .hire h2 { margin-bottom: 14px; }
+  .hire p { max-width: 60ch; color: var(--ink-2); margin: 0 0 22px; }
+  .svc {
+    display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 30px; padding: 0; list-style: none;
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 12.5px;
+  }
+  .svc li { border: 1px dashed var(--rule); border-radius: 999px; padding: 7px 16px; color: var(--ink-2); }
+
+  /* footer */
+  footer.eod { border-top: 1px dashed var(--rule); margin-top: 40px; padding: 30px 0 46px; }
+  .eod-grid {
+    display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
+    font-size: 12.5px; line-height: 2.1; color: var(--ink-2);
+  }
+  .eod a { color: var(--ink-2); }
+  .eod a:hover { color: var(--accent); }
+  .eod-close { margin-top: 22px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+  .eod-close .ok { color: var(--accent); }
+
+  /* responsive */
+  @media (max-width: 800px) {
+    .about-grid, .band-grid { grid-template-columns: 1fr; gap: 26px; }
+    details.txn summary { grid-template-columns: 64px 1fr auto; gap: 12px; }
+    .txn-body { padding-left: 4px; }
+    .hero { padding-top: 52px; }
+    .top-extra { display: none; }
+  }
+  @media (max-width: 700px) {
+    nav.top-nav { display: none; }
+  }
+  @media (max-width: 480px) {
+    .ticker-head span:last-child { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero h1 .line > span { animation: none; transform: none; }
+    .cursor { animation: none; }
+    .pulse { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<noscript><style>.cursor { display: none; }</style></noscript>
+
+<a class="skip" href="#about">Skip to content</a>
+
+<header class="top">
+  <div class="wrap top-in">
+    <span class="top-id"><b>SYED SALMAN REZA</b><span class="top-extra"> · EJ-LOG/CAREER · DHAKA +06:00</span></span>
+    <span class="top-right">
+      <nav class="top-nav" aria-label="Sections">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#codestorm">CodeStorm</a>
+      </nav>
+      <a class="chip" href="#hire"><span class="pulse" aria-hidden="true"></span>Open to work</a>
+    </span>
+  </div>
+</header>
+
+<main>
+  <!-- REC 000 · HERO -->
+  <section class="hero wrap">
+    <p class="eyebrow">Electronic journal · Career ledger of</p>
+    <h1 aria-label="Syed Salman Reza">
+      <span class="line"><span>Syed Salman</span></span>
+      <span class="line"><span>Reza</span></span>
+    </h1>
+    <p class="status-line"><span class="pulse" aria-hidden="true"></span>Status: open to work — full-time · remote · freelance</p>
+    <p class="hero-sub">
+      <strong>Full-stack engineer, systems architect, and founder.</strong>
+      Four years building the systems banks depend on; now shipping SaaS platforms, Flutter apps,
+      and AI integrations through my studio, CodeStorm Hub — and looking for the next entry in this ledger:
+      a full-time role, a remote team, or your freelance project.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="mailto:syed.reza181@gmail.com">Get in touch</a>
+      <a class="btn btn-ghost" href="#projects">Read the journal ↓</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/salman-reza/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+
+    <div class="ticker">
+      <div class="ticker-head">
+        <span>EJ REPLAY — CAREER.LOG</span>
+        <span>TERMINAL 01 · ONLINE</span>
+      </div>
+      <pre class="ticker-log" id="ej-log" aria-hidden="true"><span class="cursor"></span></pre>
+      <p class="skip" style="position:absolute; left:-9999px;">Career log: 2018 started BSc CSE at North South University. 2020 published Bike Helmet Detection model on Roboflow. 2022 Full Stack Developer at Walkinroom, London, remote; then Software Engineer at Networld Technology, Dhaka. 2023 shipped NetCon EJ extractor for Eastern Bank PLC. 2024 founded CodeStorm Hub. 2026 shipped PetFolio, Awaken and AI integrations via CodeStorm Hub; left Networld after four years of banking systems; now open to work — full-time, remote, or freelance.</p>
+    </div>
+  </section>
+
+  <!-- REC 001 · ABOUT -->
+  <section class="rec wrap" id="about">
+    <div class="rec-head">
+      <p class="rec-id">Rec 001 / 008 · About</p>
+      <p class="rec-note">OPERATOR PROFILE</p>
+    </div>
+    <h2 class="rec-title">The operator behind the terminal</h2>
+    <div class="about-grid">
+      <div>
+        <p>
+          I'm a full-stack software engineer in Dhaka, Bangladesh. For four years at
+          <strong>Networld Technology</strong> I built the systems banks quietly depend on —
+          electronic-journal extraction across multi-vendor ATM fleets, reconciliation microservices,
+          modernized legacy banking apps, and POS terminal firmware in C. In 2026 I closed that entry
+          to build my own products.
+        </p>
+        <p>
+          Today my work ships through <strong>CodeStorm Hub</strong>, the studio I founded:
+          the <strong>PetFolio</strong> social-commerce ecosystem, the <strong>Awaken</strong> wake-up app,
+          the <strong>StormCom</strong> multi-tenant SaaS, client dashboards, and a growing set of
+          <strong>AI integrations</strong> — MCP servers, LLM tooling, and agentic workflows.
+          Earlier detours produced a computer-vision model with 85,000+ views on Roboflow and a
+          quantum-computing capstone run on real IBM hardware.
+        </p>
+        <p>
+          I design systems end to end — architecture, data models, APIs, UI, deployment — and I'm
+          openly looking for what's next: a full-time role, a remote team, or freelance work.
+          The standard I carry over from banking: logs must balance, transactions must reconcile.
+        </p>
+      </div>
+      <ul class="fact-list">
+        <li>LOC ······ <b>Dhaka, BD (UTC+6)</b></li>
+        <li>ROLE ····· <b>Full-stack engineer</b></li>
+        <li>FOCUS ···· <b>SaaS · Mobile · AI</b></li>
+        <li>VENTURE ·· <b>CodeStorm Hub · founder</b></li>
+        <li>EXP ······ <b>4+ years</b></li>
+        <li>EDU ······ <b>BSc CSE · NSU · 2022</b></li>
+        <li>DOMAIN ··· <b>Fintech → SaaS / AI</b></li>
+        <li>STATUS ··· <b class="hot">● OPEN TO WORK</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- REC 002 · EXPERIENCE -->
+  <section class="rec wrap" id="experience">
+    <div class="rec-head">
+      <p class="rec-id">Rec 002 / 008 · Experience</p>
+      <p class="rec-note">3 ENTRIES · RECONCILED</p>
+    </div>
+    <h2 class="rec-title">Posted entries</h2>
+
+    <article class="xp">
+      <div class="xp-top">
+        <h3>Founder &amp; Lead Engineer · <span class="xp-org">CodeStorm Hub</span> — independent</h3>
+        <span class="xp-dates">2024 → PRESENT · DHAKA / REMOTE</span>
+      </div>
+      <ul>
+        <li>Founded and lead a small product studio (~7 engineers, 33+ repositories) shipping SaaS, mobile, and AI products; also taking freelance engagements as an independent full-stack engineer.</li>
+        <li>Building StormCom, a multi-tenant e-commerce SaaS with analytics dashboards, a drag-and-drop landing-page builder (storm-funnel), and a component kit (stormcomui) — Next.js, TypeScript, Prisma.</li>
+        <li>Shipped the PetFolio ecosystem: a Flutter social-commerce app with Supabase, a Next.js admin dashboard, and a Flask waitlist service.</li>
+        <li>Built Awaken, a Flutter wake-up app using Google ML Kit pose detection, live maps, and Supabase sync; delivered client work including the F. Rahman &amp; Brothers business dashboard and the Sharothee Wedding platform.</li>
+        <li>Developed AI integrations — MCP servers, LLM API tooling, an LLM-powered GitHub Action — and competed in the AMD Developer Hackathon: ACT II on lablab.ai.</li>
+      </ul>
+    </article>
+
+    <article class="xp">
+      <div class="xp-top">
+        <h3>Software Engineer · <span class="xp-org">Networld Technology Limited</span></h3>
+        <span class="xp-dates">2022-10 → 2026 · DHAKA, BD</span>
+      </div>
+      <ul>
+        <li>Designed and built a microservices-based reconciliation system with a Python Flask API and an ElectronJS desktop client.</li>
+        <li>Shipped NetCon, a multi-vendor ATM/CRM electronic-journal log extractor for Eastern Bank PLC, with real-time visualization and componentized filtering.</li>
+        <li>Led full project lifecycles deploying production Laravel applications to Windows Server (IIS) and AWS, with automated CI/CD for zero-downtime releases.</li>
+        <li>Maintained and upgraded legacy .NET banking software (Incident Management System) and modernized a raw-PHP cheque bureau system (CBRMS).</li>
+        <li>Developed dual-screen POS terminal firmware (SR600Mini) in C with structured UI screens and transaction state handling.</li>
+      </ul>
+    </article>
+
+    <article class="xp">
+      <div class="xp-top">
+        <h3>Full Stack Developer · <span class="xp-org">Walkinroom</span></h3>
+        <span class="xp-dates">2022-04 → 2022-09 · LONDON, UK (REMOTE)</span>
+      </div>
+      <ul>
+        <li>Developed and maintained a hotel-booking platform on Laravel with Tailwind CSS and native JavaScript.</li>
+        <li>Designed and indexed complex MySQL schemas for high-performance, low-latency relational queries.</li>
+        <li>Ran structured code reviews and established team-wide coding standards; collaborated directly with UI/UX and product.</li>
+      </ul>
+    </article>
+
+    <p class="balance">
+      <span>BALANCE ── 4+ YEARS · BANKING / SAAS / MOBILE / AI</span>
+      <span class="ok">ACCEPTING NEW ENTRIES ✓</span>
+    </p>
+  </section>
+
+  <!-- REC 003 · PROJECTS -->
+  <section class="rec wrap" id="projects">
+    <div class="rec-head">
+      <p class="rec-id">Rec 003 / 008 · Projects</p>
+      <p class="rec-note">10 TRANSACTIONS · RECENT FIRST · TAP TO EXPAND</p>
+    </div>
+    <h2 class="rec-title">Transaction history</h2>
+
+    <details class="txn" open>
+      <summary>
+        <span class="txn-id">TXN 01</span>
+        <span class="txn-name">PetFolio Ecosystem<small>Social-commerce platform for pet owners — app, dashboard, waitlist</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> SOCIAL COMMERCE</span><span><b>STACK</b> FLUTTER · SUPABASE · NEXT.JS · FLASK</span><span><b>YEAR</b> 2026</span><span><b>STATUS</b> IN DEVELOPMENT</span></p>
+        <p>
+          A product family built end to end: a <strong>Flutter app</strong> (Riverpod, Supabase) blending
+          social feeds, pet matching and discovery, adoption, and a marketplace; a
+          <strong>Next.js admin dashboard</strong> with order and promo management on Supabase; and a
+          <strong>Flask waitlist service</strong>. Spans mobile, web, database schema, and auth —
+          one architecture, three shipped surfaces.
+        </p>
+        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/petfolio" target="_blank" rel="noopener">→ petfolio</a> · <a href="https://github.com/CodeStorm-Hub/petfolio-dashboard" target="_blank" rel="noopener">→ petfolio-dashboard</a></p>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 02</span>
+        <span class="txn-name">Awaken<small>Flutter wake-up app with ML Kit pose detection — newest work</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> MOBILE / AI</span><span><b>STACK</b> FLUTTER · RIVERPOD · ML KIT · SUPABASE</span><span><b>YEAR</b> 2026</span><span><b>STATUS</b> ACTIVE DEVELOPMENT</span></p>
+        <p>
+          A cross-platform alarm and activity app: scheduled and active alarm flows, movement detection
+          through <strong>Google ML Kit pose tracking</strong>, live location with vector maps and
+          geolocation, progress dashboards, and Supabase-backed auth and sync — Flutter with Riverpod
+          across Android, iOS, and desktop targets.
+        </p>
+        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/awaken" target="_blank" rel="noopener">→ awaken on GitHub</a></p>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 03</span>
+        <span class="txn-name">StormCom<small>Multi-tenant e-commerce SaaS · flagship CodeStorm Hub product</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> SAAS / E-COMMERCE</span><span><b>STACK</b> NEXT.JS · TYPESCRIPT · PRISMA</span><span><b>YEAR</b> 2025–2026</span><span><b>STATUS</b> ACTIVE DEVELOPMENT</span></p>
+        <p>
+          A multi-tenant commerce platform: storefronts, analytics dashboards, order processing, and a
+          drag-and-drop landing-page builder (storm-funnel), backed by a component kit (stormcomui) and
+          commerce tooling (storm-commerce-kit). Built with <strong>Next.js, TypeScript, and Prisma</strong>.
+        </p>
+        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/StormCom" target="_blank" rel="noopener">→ StormCom on GitHub</a></p>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 04</span>
+        <span class="txn-name">AI Integrations &amp; Tooling<small>MCP servers, LLM API clients, agentic workflows</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> AI ENGINEERING</span><span><b>STACK</b> PYTHON · TYPESCRIPT · MCP · LLM APIS</span><span><b>YEAR</b> 2025–2026</span><span><b>STATUS</b> ONGOING</span></p>
+        <p>
+          A working collection of AI infrastructure: a <strong>Material 3 MCP server</strong> that gives
+          coding agents a design-system knowledge base; <strong>freellmapi</strong>, a Dockerized client
+          and desktop app unifying free LLM APIs; an <strong>LLM-powered GitHub Action</strong> that
+          labels and assesses comments via Azure AI inference; and agentic-workflow experiments
+          (agentics, gh-aw). Capped with the <strong>AMD Developer Hackathon: ACT II</strong> on lablab.ai.
+        </p>
+        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/freellmapi" target="_blank" rel="noopener">→ freellmapi</a> · <a href="https://github.com/CodeStorm-Hub/ai-assessment-comment-labeler" target="_blank" rel="noopener">→ comment-labeler</a></p>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 05</span>
+        <span class="txn-name">F. Rahman &amp; Brothers<small>Business dashboard — revenue, stock, and operations</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> CLIENT WORK</span><span><b>STACK</b> NEXT.JS · PRISMA · POSTGRESQL</span><span><b>YEAR</b> 2026</span><span><b>STATUS</b> BUILT 2026</span></p>
+        <p>
+          A business platform for a trading company: authenticated dashboards with revenue and stock
+          charts, data tables, and alerts — <strong>Next.js with Prisma on PostgreSQL</strong>, motion and
+          3D touches via React Three Fiber, and an end-to-end test suite.
+        </p>
+        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/frahman" target="_blank" rel="noopener">→ frahman on GitHub</a></p>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 06</span>
+        <span class="txn-name">NetCon<small>ATM/CRM electronic-journal log extractor for Eastern Bank PLC</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> BANKING</span><span><b>STACK</b> FLASK · ELECTRONJS · QUASAR</span><span><b>YEAR</b> 2022–2023</span><span><b>STATUS</b> IN PRODUCTION</span></p>
+        <p>
+          Multi-vendor ATMs and cash-recycling machines each write electronic journals in their own dialect.
+          NetCon ingests them all: a modular Windows application with a <strong>Python Flask API backend</strong> and an
+          <strong>ElectronJS/Quasar frontend</strong> doing real-time extraction, multi-sorting, and componentized
+          filtering of EJ log data — and the namesake of this page's ledger design.
+        </p>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 07</span>
+        <span class="txn-name">Bike Helmet Detection<small>Computer-vision model · 85.3k views · 4.6k downloads on Roboflow</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> COMPUTER VISION</span><span><b>STACK</b> ROBOFLOW · SCALED YOLOV4</span><span><b>YEAR</b> 2020</span><span><b>STATUS</b> PUBLISHED</span></p>
+        <p>
+          A two-class object-detection model (<strong>With Helmet / Without Helmet</strong>) trained by transfer
+          learning from a COCO checkpoint. Version 2 scaled the dataset to 3,735 images with mosaic, rotation,
+          and shear augmentation — lifting mAP@50 from 74.4% to <strong>91.5%</strong>.
+        </p>
+        <div class="metrics" role="img" aria-label="Version 2 results: mAP at 50 91.5 percent, recall 92.8 percent, precision 65.1 percent">
+          <div class="metric"><span class="m-label">mAP@50</span><span class="m-track"><span class="m-fill" style="width:91.5%"></span></span><span class="m-val">91.5%</span></div>
+          <div class="metric"><span class="m-label">Recall</span><span class="m-track"><span class="m-fill" style="width:92.8%"></span></span><span class="m-val">92.8%</span></div>
+          <div class="metric"><span class="m-label">Precision</span><span class="m-track"><span class="m-fill" style="width:65.1%"></span></span><span class="m-val">65.1%</span></div>
+        </div>
+        <p class="m-cap">v2 · 3,735 images · Scaled YOLOv4 · COCO transfer learning</p>
+        <p class="txn-link"><a href="https://universe.roboflow.com/bike-helmets/bike-helmet-detection-2vdjo" target="_blank" rel="noopener">→ View on Roboflow Universe</a></p>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 08</span>
+        <span class="txn-name">Quantum Superdense-Coding Defense<small>University capstone — eavesdropping prevention with Qiskit</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> QUANTUM COMPUTING</span><span><b>STACK</b> QISKIT · IBM QUANTUM API · ML</span><span><b>YEAR</b> 2022</span><span><b>STATUS</b> RESEARCH</span></p>
+        <p>
+          Final-year capstone at NSU: quantum circuits that detect and prevent eavesdropping on
+          superdense-coding channels, with machine-learning models automating error-correction
+          parameters — executed on real IBM quantum hardware via the <strong>IBM Quantum API</strong>.
+        </p>
+        <div class="qsvg" aria-hidden="true">
+          <svg viewBox="0 0 420 110" xmlns="http://www.w3.org/2000/svg">
+            <line class="wire" x1="10" y1="30" x2="410" y2="30"/>
+            <line class="wire" x1="10" y1="80" x2="410" y2="80"/>
+            <rect class="gate" x="50" y="16" width="28" height="28" rx="3"/>
+            <text class="gate-label" x="59" y="35">H</text>
+            <circle class="dot" cx="130" cy="30" r="5"/>
+            <line class="gate" x1="130" y1="30" x2="130" y2="80"/>
+            <circle class="gate" cx="130" cy="80" r="10"/>
+            <line class="gate" x1="130" y1="70" x2="130" y2="90"/>
+            <rect class="gate" x="200" y="16" width="28" height="28" rx="3"/>
+            <text class="gate-label" x="209" y="35">Z</text>
+            <rect class="gate" x="260" y="16" width="28" height="28" rx="3"/>
+            <text class="gate-label" x="269" y="35">X</text>
+            <rect class="gate" x="340" y="16" width="34" height="28" rx="3"/>
+            <text class="gate-label" x="347" y="35">⟨M⟩</text>
+            <rect class="gate" x="340" y="66" width="34" height="28" rx="3"/>
+            <text class="gate-label" x="347" y="85">⟨M⟩</text>
+          </svg>
+        </div>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 09</span>
+        <span class="txn-name">SR600Mini<small>Dual-screen POS terminal firmware in embedded C</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> EMBEDDED / PAYMENTS</span><span><b>STACK</b> C (EMBEDDED)</span><span><b>STATUS</b> DELIVERED</span></p>
+        <p>
+          Firmware for a dual-screen point-of-sale terminal: structured UI screens, transaction and state
+          handling, and resource-aware display logic — written in <strong>C</strong> against tight memory
+          budgets, where every byte on screen is accounted for.
+        </p>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 10</span>
+        <span class="txn-name">Allora<small>Containerized e-commerce REST API with hybrid rendering</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> E-COMMERCE</span><span><b>STACK</b> LARAVEL · FILAMENT · NUXT.JS · DOCKER</span><span><b>YEAR</b> 2023–2024</span><span><b>STATUS</b> COMPLETED</span></p>
+        <p>
+          A containerized e-commerce backend pairing a <strong>Laravel + Filament</strong> admin with a
+          <strong>Nuxt.js</strong> storefront using SSR/SSG/ISR hybrid rendering — complex relational schemas,
+          product listings, and secure order processing.
+        </p>
+      </div>
+    </details>
+  </section>
+
+  <!-- REC 004 · SKILLS -->
+  <section class="rec wrap" id="skills">
+    <div class="rec-head">
+      <p class="rec-id">Rec 004 / 008 · Skills</p>
+      <p class="rec-note">CAPABILITY MATRIX</p>
+    </div>
+    <h2 class="rec-title">Instruments on hand</h2>
+    <div class="skills">
+      <div class="skill-col">
+        <h3>Architecture</h3>
+        <ul><li>System design</li><li>Microservices</li><li>Multi-tenant SaaS</li><li>RESTful API design</li><li>ETL / data integration</li></ul>
+      </div>
+      <div class="skill-col">
+        <h3>Backend</h3>
+        <ul><li>PHP · Laravel · Filament</li><li>Python · Flask</li><li>Node.js</li><li>C (embedded)</li><li>Prisma ORM</li></ul>
+      </div>
+      <div class="skill-col">
+        <h3>Frontend &amp; Mobile</h3>
+        <ul><li>React · Next.js</li><li>TypeScript</li><li>Flutter · Dart</li><li>ElectronJS · Quasar</li><li>Tailwind CSS</li></ul>
+      </div>
+      <div class="skill-col">
+        <h3>Databases</h3>
+        <ul><li>MySQL</li><li>PostgreSQL</li><li>Oracle</li><li>Supabase</li><li>Multi-tenant schemas</li></ul>
+      </div>
+      <div class="skill-col">
+        <h3>Cloud &amp; DevOps</h3>
+        <ul><li>AWS · S3 / RDS / ECS</li><li>Docker</li><li>Windows Server · IIS</li><li>Git CI/CD</li><li>Zero-downtime deploys</li></ul>
+      </div>
+      <div class="skill-col">
+        <h3>AI &amp; Quantum</h3>
+        <ul><li>LLM APIs · MCP servers</li><li>AI agent workflows</li><li>Roboflow · YOLOv4</li><li>Qiskit</li><li>IBM Quantum API</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- REC 005 · CODESTORM -->
+  <section class="rec wrap" id="codestorm">
+    <div class="rec-head">
+      <p class="rec-id">Rec 005 / 008 · Venture</p>
+      <p class="rec-note">PRIMARY LEDGER · 2024 →</p>
+    </div>
+    <div class="band">
+      <div class="band-grid">
+        <div>
+          <h3>CodeStorm Hub</h3>
+          <p>
+            The product studio I founded and lead — and where my recent work lives.
+            Flagships: <strong>StormCom</strong> (multi-tenant e-commerce) and <strong>StormERP</strong>;
+            2026 shipped <strong>PetFolio</strong>, <strong>Awaken</strong>, and client platforms like the
+            F. Rahman &amp; Brothers dashboard, MSC real estate, and Sharothee Wedding.
+          </p>
+          <p>
+            The org competed in the <strong>AMD Developer Hackathon: ACT II</strong> on lablab.ai,
+            building on the AMD AI Developer Cloud.
+          </p>
+          <p class="txn-link">
+            <a href="https://www.codestormhub.dev" target="_blank" rel="noopener">→ codestormhub.dev</a> ·
+            <a href="https://github.com/CodeStorm-Hub" target="_blank" rel="noopener">→ github.com/CodeStorm-Hub</a>
+          </p>
+        </div>
+        <ul class="fact-list">
+          <li>REPOS ····· <b>33+</b></li>
+          <li>TEAM ······ <b>~7 engineers</b></li>
+          <li>PRODUCTS ·· <b>StormCom · StormERP</b></li>
+          <li>SHIPPED ··· <b>PetFolio · Awaken</b></li>
+          <li>FOCUS ····· <b>SaaS · Mobile · AI</b></li>
+          <li>HACKATHON · <b>AMD ACT II · lablab.ai</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- REC 006 · CERTIFICATIONS -->
+  <section class="rec wrap" id="certs">
+    <div class="rec-head">
+      <p class="rec-id">Rec 006 / 008 · Certifications</p>
+      <p class="rec-note">ORACLE ×4</p>
+    </div>
+    <div class="certs">
+      <div class="cert"><b>Oracle Cloud Infrastructure</b> Solution Engineer &amp; Sales Specialist <span class="cert-yr">2023</span></div>
+      <div class="cert"><b>Oracle Analytics</b> Solution Engineer Specialist <span class="cert-yr">2024</span></div>
+      <div class="cert"><b>Oracle Exadata On-Premise</b> Solution Engineer &amp; Sales Specialist <span class="cert-yr">2022</span></div>
+      <div class="cert"><b>Oracle Database 19c</b> Introduction to SQL · 40-hour training track</div>
+    </div>
+  </section>
+
+  <!-- REC 007 · FIELD NOTES -->
+  <section class="rec wrap" id="notes">
+    <div class="rec-head">
+      <p class="rec-id">Rec 007 / 008 · Field notes</p>
+      <p class="rec-note">PENDING ENTRIES</p>
+    </div>
+    <div class="notes">
+      <p style="margin:0; color:var(--ink-2);">Writing queue — entries drafted, not yet posted.<span class="soon">Coming soon</span></p>
+      <ul>
+        <li>Parsing multi-vendor ATM electronic journals without losing your mind</li>
+        <li>Shipping Laravel to Windows Server (IIS): notes from a banking deployment</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- REC 008 · HIRE -->
+  <section class="rec wrap hire" id="hire">
+    <div class="rec-head">
+      <p class="rec-id">Rec 008 / 008 · Engagement</p>
+      <p class="rec-note">● OPEN TO WORK</p>
+    </div>
+    <h2 class="rec-title">Open a new entry</h2>
+    <p>
+      I'm available now — for full-time engineering roles (Dhaka or remote), freelance builds,
+      and product collaborations through CodeStorm Hub. Backend APIs that hold up under audit,
+      dashboards your team will actually use, mobile apps, and AI integrations shipped to production.
+    </p>
+    <ul class="svc">
+      <li>FULL-TIME · REMOTE ROLES</li>
+      <li>LARAVEL / FLASK REST APIS</li>
+      <li>NEXT.JS APPLICATIONS</li>
+      <li>FLUTTER MOBILE APPS</li>
+      <li>AI INTEGRATIONS · LLM / MCP</li>
+      <li>SYSTEM ARCHITECTURE &amp; DESIGN</li>
+      <li>ADMIN DASHBOARDS · FILAMENT</li>
+      <li>DATABASE DESIGN &amp; AWS / IIS DEPLOYS</li>
+    </ul>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="mailto:syed.reza181@gmail.com">syed.reza181@gmail.com</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/salman-reza/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-ghost" href="https://upwork.com/freelancers/syed181" target="_blank" rel="noopener">Upwork ↗</a>
+    </div>
+  </section>
+</main>
+
+<footer class="eod">
+  <div class="wrap">
+    <div class="eod-grid">
+      <div>
+        SYED SALMAN REZA<br>
+        DHAKA, BANGLADESH · UTC+6<br>
+        <a href="mailto:syed.reza181@gmail.com">syed.reza181@gmail.com</a>
+      </div>
+      <div>
+        <a href="https://github.com/syed-reza98" target="_blank" rel="noopener">GITHUB / SYED-REZA98</a><br>
+        <a href="https://www.linkedin.com/in/salman-reza/" target="_blank" rel="noopener">LINKEDIN / SALMAN-REZA</a><br>
+        <a href="https://orcid.org/0009-0006-5258-6789" target="_blank" rel="noopener">ORCID / 0009-0006-5258-6789</a>
+      </div>
+      <div>
+        <a href="https://www.codestormhub.dev" target="_blank" rel="noopener">CODESTORMHUB.DEV</a><br>
+        <a href="https://universe.roboflow.com/bike-helmets/bike-helmet-detection-2vdjo" target="_blank" rel="noopener">ROBOFLOW / BIKE-HELMETS</a><br>
+        <a href="https://upwork.com/freelancers/syed181" target="_blank" rel="noopener">UPWORK / SYED181</a>
+      </div>
+    </div>
+    <p class="eod-close">EOD ── JOURNAL OPEN FOR NEW ENTRIES · 2026 · <span class="ok">OPEN TO WORK ✓</span> · NO EXTERNAL REQUESTS · SET IN SYSTEM TYPE</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    document.documentElement.lang = document.documentElement.lang || "en";
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* ---- EJ ticker ---- */
+    var LINES = [
+      "[2018-01  09:00:12] SESSION OPEN — B.SC CSE · NORTH SOUTH UNIVERSITY, DHAKA",
+      "[2020-09  14:22:41] TXN 0001 — BIKE HELMET DETECTION PUBLISHED · ROBOFLOW · YOLOV4",
+      "[2022-04  10:05:33] TXN 0002 — FULL STACK DEVELOPER · WALKINROOM · LONDON (REMOTE)",
+      "[2022-10  09:12:44] TXN 0003 — SOFTWARE ENGINEER · NETWORLD TECHNOLOGY · DHAKA",
+      "[2023-——  03:41:09] TXN 0004 — NETCON EJ EXTRACTOR SHIPPED · EASTERN BANK PLC",
+      "[2024-——  21:15:37] TXN 0005 — FOUNDED CODESTORM HUB · STORMCOM / STORMERP",
+      "[2026-——  11:26:48] TXN 0006 — PETFOLIO · AWAKEN · AI INTEGRATIONS — VIA CODESTORM HUB",
+      "[2026-——  17:00:00] SESSION CLOSE — NETWORLD TECHNOLOGY · 4 YEARS OF BANKING SYSTEMS",
+      "[2026-07  --:--:--] STATUS   — OPEN TO WORK · FULL-TIME / REMOTE / FREELANCE ✓"
+    ];
+    var log = document.getElementById("ej-log");
+    if (log) {
+      if (reduced) {
+        log.textContent = LINES.join("\n");
+      } else {
+        var cursor = document.createElement("span");
+        cursor.className = "cursor";
+        var text = document.createTextNode("");
+        log.textContent = "";
+        log.appendChild(text);
+        log.appendChild(cursor);
+        var li = 0, ci = 0;
+        function tick() {
+          if (li >= LINES.length) return;
+          var line = LINES[li];
+          if (ci < line.length) {
+            var step = Math.min(3, line.length - ci);
+            text.data += line.slice(ci, ci + step);
+            ci += step;
+            setTimeout(tick, 14);
+          } else {
+            text.data += "\n";
+            li++; ci = 0;
+            setTimeout(tick, li === LINES.length ? 0 : 220);
+          }
+        }
+        setTimeout(tick, 500);
+      }
+    }
+  })();
+</script>
+</body>
+</html>
