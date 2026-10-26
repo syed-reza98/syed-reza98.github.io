@@ -5,9 +5,26 @@
 <title>Syed Salman Reza — Software Engineer</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Syed Salman Reza — full-stack software engineer in Dhaka. Four years of banking systems (ATM EJ extraction, reconciliation, POS firmware); now shipping SaaS, Flutter apps, and AI integrations via CodeStorm Hub. Open to full-time, remote, and freelance work.">
+<link rel="canonical" href="https://syed-reza98.github.io/">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F2EDE1">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0C0E11">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Syed Salman Reza — Software Engineer">
+<meta property="og:description" content="Full-stack engineer in Dhaka. Banking systems, SaaS, Flutter apps, and AI integrations via CodeStorm Hub.">
+<meta property="og:url" content="https://syed-reza98.github.io/">
+<meta property="og:image" content="https://syed-reza98.github.io/icon-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Syed Salman Reza — Software Engineer">
+<meta name="twitter:description" content="Full-stack engineer in Dhaka. Banking systems, SaaS, Flutter apps, and AI integrations via CodeStorm Hub.">
+<meta name="twitter:image" content="https://syed-reza98.github.io/icon-512.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Syed Salman Reza","jobTitle":"Software Engineer","url":"https://syed-reza98.github.io/","image":"https://syed-reza98.github.io/icon-512.png","address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"},"sameAs":["https://github.com/syed-reza98","https://www.linkedin.com/in/salman-reza/","https://upwork.com/freelancers/syed181","https://orcid.org/0009-0006-5258-6789"]}
+</script>
+<script>(function(){try{var s=localStorage.getItem("theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);} }catch(e){}})();</script>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/icon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
 <!-- The Engineer's Ledger · v2 -->
 <style>
   /* ============ TOKENS ============ */
@@ -84,7 +101,9 @@
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; color-scheme: light dark; }
+  :root[data-theme="light"] { color-scheme: light; }
+  :root[data-theme="dark"] { color-scheme: dark; }
   body {
     margin: 0;
     background: var(--bg);
@@ -118,6 +137,7 @@
     border-bottom: 1px dashed var(--rule);
   }
   .top-in {
+    position: relative;
     display: flex; align-items: center; justify-content: space-between;
     gap: 16px; padding-block: 12px;
     font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
@@ -127,7 +147,10 @@
   .top-id b { color: var(--ink); font-weight: 700; }
   .top-right { display: flex; align-items: center; gap: 18px; }
   nav.top-nav { display: flex; gap: 18px; flex-wrap: wrap; }
-  nav.top-nav a { color: var(--ink-2); text-decoration: none; text-transform: uppercase; padding: 10px 2px; }
+  nav.top-nav a { color: var(--ink-2); text-decoration: none; text-transform: uppercase; padding: 10px 2px; min-height: 44px; display: inline-flex; align-items: center; }
+  .nav-toggle { display: none; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: var(--ink); border: 1px solid var(--rule); border-radius: 3px; padding: 10px 14px; cursor: pointer; min-height: 44px; }
+  .theme-toggle[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .theme-toggle { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: var(--ink-2); border: 1px solid var(--rule); border-radius: 3px; padding: 10px 12px; cursor: pointer; min-height: 44px; }
   nav.top-nav a:hover { color: var(--accent); }
   .chip {
     font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
@@ -287,6 +310,7 @@
   }
   details.txn summary::-webkit-details-marker { display: none; }
   details.txn summary:hover { background: var(--rule-soft); }
+  details.txn[open] summary { background: var(--surface); }
   .txn-id {
     font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
     font-size: 12.5px; color: var(--accent); letter-spacing: 0.08em;
@@ -296,6 +320,8 @@
   .txn-flip {
     font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
     font-size: 18px; color: var(--ink-3); align-self: center;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border: 1px solid var(--rule); border-radius: 50%;
   }
   details.txn[open] .txn-flip { color: var(--accent); }
   details.txn[open] .txn-flip::before { content: "−"; }
@@ -348,7 +374,7 @@
   /* codestorm band */
   .band { background: var(--band); border: 1px dashed var(--rule); border-radius: 6px; padding: 34px 32px; }
   .band-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 36px; }
-  .band h3 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 12px; text-transform: uppercase; }
+  .band h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 12px; text-transform: uppercase; }
   .band p { color: var(--ink-2); margin: 0 0 12px; max-width: 58ch; }
   .band .fact-list { border-color: var(--rule); }
 
@@ -392,7 +418,7 @@
     font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
     font-size: 12.5px; line-height: 2.1; color: var(--ink-2);
   }
-  .eod a { color: var(--ink-2); }
+  .eod a { color: var(--ink-2); display: inline-block; padding: 6px 2px; }
   .eod a:hover { color: var(--accent); }
   .eod-close { margin-top: 22px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
   .eod-close .ok { color: var(--accent); }
@@ -405,8 +431,18 @@
     .hero { padding-top: 52px; }
     .top-extra { display: none; }
   }
-  @media (max-width: 700px) {
+  @media (max-width: 900px) {
     nav.top-nav { display: none; }
+    nav.top-nav.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--surface); border: 1px solid var(--rule); border-top: none; border-radius: 0 0 6px 6px; box-shadow: 0 12px 32px rgba(0,0,0,0.18); padding: 8px 24px 16px; gap: 0; }
+    nav.top-nav.open a { border-bottom: 1px dashed var(--rule); padding: 12px 2px; }
+    nav.top-nav.open a:last-child { border-bottom: none; }
+    .nav-toggle { display: inline-block; }
+    .top-in { flex-wrap: wrap; }
+    .rec-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .rec-note { text-align: left; }
+    .cta-row { flex-direction: column; }
+    .cta-row .btn { width: 100%; text-align: center; }
+    .ticker-log { min-height: calc(1.85em * 6); }
   }
   @media (max-width: 480px) {
     .ticker-head span:last-child { display: none; }
@@ -430,24 +466,28 @@
 
 <noscript><style>.cursor { display: none; }</style></noscript>
 
-<a class="skip" href="#about">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
   <div class="wrap top-in">
     <span class="top-id"><b>SYED SALMAN REZA</b><span class="top-extra"> · EJ-LOG/CAREER · DHAKA +06:00</span></span>
     <span class="top-right">
-      <nav class="top-nav" aria-label="Sections">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="top-nav">Menu</button>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-pressed="false">Dark mode</button>
+      <nav class="top-nav" id="top-nav" aria-label="Sections">
+        <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#codestorm">CodeStorm</a>
+        <a href="#hire">Hire</a>
       </nav>
       <a class="chip" href="#hire"><span class="pulse" aria-hidden="true"></span>Open to work</a>
     </span>
   </div>
 </header>
 
-<main>
+<main id="main">
   <!-- REC 000 · HERO -->
   <section class="hero wrap">
     <p class="eyebrow">Electronic journal · Career ledger of</p>
@@ -457,7 +497,7 @@
     </h1>
     <p class="status-line"><span class="pulse" aria-hidden="true"></span>Status: open to work — full-time · remote · freelance</p>
     <p class="hero-sub">
-      <strong>Full-stack engineer, systems architect, and founder.</strong>
+      <strong>Full-stack engineer and systems architect.</strong>
       Four years building the systems banks depend on; now shipping SaaS platforms, Flutter apps,
       and AI integrations through my studio, CodeStorm Hub — and looking for the next entry in this ledger:
       a full-time role, a remote team, or your freelance project.
@@ -512,7 +552,7 @@
         <li>LOC ······ <b>Dhaka, BD (UTC+6)</b></li>
         <li>ROLE ····· <b>Full-stack engineer</b></li>
         <li>FOCUS ···· <b>SaaS · Mobile · AI</b></li>
-        <li>VENTURE ·· <b>CodeStorm Hub · founder</b></li>
+        <li>VENTURE ·· <b>CodeStorm Hub · lead developer</b></li>
         <li>EXP ······ <b>4+ years</b></li>
         <li>EDU ······ <b>BSc CSE · NSU · 2022</b></li>
         <li>DOMAIN ··· <b>Fintech → SaaS / AI</b></li>
@@ -531,15 +571,17 @@
 
     <article class="xp">
       <div class="xp-top">
-        <h3>Founder &amp; Lead Engineer · <span class="xp-org">CodeStorm Hub</span> — independent</h3>
+        <h3>Lead Developer · <span class="xp-org">CodeStorm Hub</span> — independent</h3>
         <span class="xp-dates">2024 → PRESENT · DHAKA / REMOTE</span>
       </div>
       <ul>
-        <li>Founded and lead a small product studio (~7 engineers, 33+ repositories) shipping SaaS, mobile, and AI products; also taking freelance engagements as an independent full-stack engineer.</li>
+        <li>Lead development at a small product studio (~7 engineers, 33+ repositories) shipping SaaS, mobile, and AI products; also taking freelance engagements as an independent full-stack engineer.</li>
         <li>Building StormCom, a multi-tenant e-commerce SaaS with analytics dashboards, a drag-and-drop landing-page builder (storm-funnel), and a component kit (stormcomui) — Next.js, TypeScript, Prisma.</li>
         <li>Shipped the PetFolio ecosystem: a Flutter social-commerce app with Supabase, a Next.js admin dashboard, and a Flask waitlist service.</li>
         <li>Built Awaken, a Flutter wake-up app using Google ML Kit pose detection, live maps, and Supabase sync; delivered client work including the F. Rahman &amp; Brothers business dashboard and the Sharothee Wedding platform.</li>
         <li>Developed AI integrations — MCP servers, LLM API tooling, an LLM-powered GitHub Action — and competed in the AMD Developer Hackathon: ACT II on lablab.ai.</li>
+        <li>Built SheraTutor, an AI board-examiner web app (Next.js, GenKit, Supabase): photograph a handwritten answer script, grade it against the NCTB/board rubric, and return a step-by-step deduction breakdown in Bangla/English. My scope on the working branch: 155 of 182 commits, including the web code-review fixes.</li>
+        <li>Co-own Shondhaan, a Flutter multi-service super-app (see TXN 02): 98 of 124 main-branch commits in Oct 2026, on Mart, search, jobs, and Play Store release config. Private repo — details on request, no public code link.</li>
       </ul>
     </article>
 
@@ -579,13 +621,83 @@
   <section class="rec wrap" id="projects">
     <div class="rec-head">
       <p class="rec-id">Rec 003 / 008 · Projects</p>
-      <p class="rec-note">10 TRANSACTIONS · RECENT FIRST · TAP TO EXPAND</p>
+      <p class="rec-note">15 TRANSACTIONS · SELECTED FIRST · TAP TO EXPAND</p>
     </div>
     <h2 class="rec-title">Transaction history</h2>
 
     <details class="txn" open>
       <summary>
         <span class="txn-id">TXN 01</span>
+        <span class="txn-name">SheraTutor<small>AI board-examiner — grade handwritten scripts against the NCTB/board rubric</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> EDUCATION / AI</span><span><b>STACK</b> NEXT.JS · GENKIT · SUPABASE · VERCEL</span><span><b>YEAR</b> 2026</span><span><b>ROLE</b> TEAM · CODESTORM HUB</span></p>
+        <p>
+          <strong>What it does:</strong> photograph a handwritten answer script, grade it against the
+          NCTB curriculum and board rubric, and return a step-by-step deduction breakdown —
+          bilingual Bangla/English, with study material and guidebooks.
+        </p>
+        <p>
+          <strong>My scope:</strong> 155 of 182 commits on the working branch, including the web
+          code-review fixes (auth-gated tutor chat, sanitised errors, security headers, idempotent
+          grading, timeouts, fail-closed retrieval). Collaborators: Anam Chowdhury and Rezwana Karim.
+        </p>
+        <p>
+          <strong>Hard part:</strong> grading must be auditable, not just a score — every deduction
+          needs a rubric step a teacher can check.
+        </p>
+        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/Sheratutor" target="_blank" rel="noopener">→ Sheratutor on GitHub</a></p>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 02</span>
+        <span class="txn-name">Shondhaan<small>Bangladeshi multi-service super-app — co-owned, private repo</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> SUPER-APP / MOBILE</span><span><b>STACK</b> FLUTTER · RIVERPOD · GOROUTER · DIO · SUPABASE</span><span><b>YEAR</b> 2026</span><span><b>ROLE</b> CO-OWNER</span></p>
+        <p>
+          <strong>What it does:</strong> on-demand home services, Mart grocery, a jobs portal with
+          digital CV, deals, parcel, ride, exam and food — a Pathao-style super-app for Bangladesh,
+          with a 4-tab shell and an auth-guarded router.
+        </p>
+        <p>
+          <strong>My scope:</strong> 98 of 124 main-branch commits in Oct 2026 — Mart cart persistence
+          and Dhaka delivery-fee fixes, home vertical feeds, universal search, the jobs portal, API-model
+          alignment, and Google Play production release config. Team member afsan123 created the repo;
+          this project is also mine.
+        </p>
+        <p>
+          <strong>Result:</strong> phases 1–9 verified on device per the project spec; backend spec
+          covers 564 endpoints across 10 microservices. No public code link: the repo is private —
+          details on request.
+        </p>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 03</span>
+        <span class="txn-name">StormCom<small>Multi-tenant e-commerce SaaS · flagship CodeStorm Hub product</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> SAAS / E-COMMERCE</span><span><b>STACK</b> NEXT.JS · TYPESCRIPT · PRISMA</span><span><b>YEAR</b> 2025–2026</span><span><b>STATUS</b> 2025–2026 · FLAGSHIP</span></p>
+        <p>
+          A multi-tenant commerce platform: storefronts, analytics dashboards, order processing, and a
+          drag-and-drop landing-page builder (storm-funnel), backed by a component kit (stormcomui) and
+          commerce tooling (storm-commerce-kit). Built with <strong>Next.js, TypeScript, and Prisma</strong>.
+        </p>
+        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/StormCom" target="_blank" rel="noopener">→ StormCom on GitHub</a></p>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 04</span>
         <span class="txn-name">PetFolio Ecosystem<small>Social-commerce platform for pet owners — app, dashboard, waitlist</small></span>
         <span class="txn-flip" aria-hidden="true"></span>
       </summary>
@@ -598,13 +710,13 @@
           <strong>Flask waitlist service</strong>. Spans mobile, web, database schema, and auth —
           one architecture, three shipped surfaces.
         </p>
-        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/petfolio" target="_blank" rel="noopener">→ petfolio</a> · <a href="https://github.com/CodeStorm-Hub/petfolio-dashboard" target="_blank" rel="noopener">→ petfolio-dashboard</a></p>
+        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/petfolio" target="_blank" rel="noopener">→ petfolio</a> · <a href="https://github.com/CodeStorm-Hub/petfolio-dashboard" target="_blank" rel="noopener">→ petfolio-dashboard</a> · <a href="https://github.com/CodeStorm-Hub/petsphere" target="_blank" rel="noopener">→ petsphere (Flutter app)</a></p>
       </div>
     </details>
 
     <details class="txn">
       <summary>
-        <span class="txn-id">TXN 02</span>
+        <span class="txn-id">TXN 05</span>
         <span class="txn-name">Awaken<small>Flutter wake-up app with ML Kit pose detection — newest work</small></span>
         <span class="txn-flip" aria-hidden="true"></span>
       </summary>
@@ -622,43 +734,55 @@
 
     <details class="txn">
       <summary>
-        <span class="txn-id">TXN 03</span>
-        <span class="txn-name">StormCom<small>Multi-tenant e-commerce SaaS · flagship CodeStorm Hub product</small></span>
+        <span class="txn-id">TXN 06</span>
+        <span class="txn-name">maplibre_mcp<small>MapLibre MCP server — give coding agents map knowledge</small></span>
         <span class="txn-flip" aria-hidden="true"></span>
       </summary>
       <div class="txn-body">
-        <p class="txn-meta"><span><b>DOMAIN</b> SAAS / E-COMMERCE</span><span><b>STACK</b> NEXT.JS · TYPESCRIPT · PRISMA</span><span><b>YEAR</b> 2025–2026</span><span><b>STATUS</b> ACTIVE DEVELOPMENT</span></p>
+        <p class="txn-meta"><span><b>DOMAIN</b> AI TOOLING / MAPS</span><span><b>STACK</b> TYPESCRIPT · NODE · MCP SDK · MAPLIBRE</span><span><b>YEAR</b> 2026</span><span><b>ROLE</b> TEAM · CODESTORM HUB</span></p>
         <p>
-          A multi-tenant commerce platform: storefronts, analytics dashboards, order processing, and a
-          drag-and-drop landing-page builder (storm-funnel), backed by a component kit (stormcomui) and
-          commerce tooling (storm-commerce-kit). Built with <strong>Next.js, TypeScript, and Prisma</strong>.
+          A small, focused MCP server exposing MapLibre mapping knowledge — style spec, data and
+          framework layers — to AI coding agents. No web UI by design: the product is the tool surface.
         </p>
-        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/StormCom" target="_blank" rel="noopener">→ StormCom on GitHub</a></p>
+        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/maplibre_mcp" target="_blank" rel="noopener">→ maplibre_mcp on GitHub</a></p>
       </div>
     </details>
 
     <details class="txn">
       <summary>
-        <span class="txn-id">TXN 04</span>
-        <span class="txn-name">AI Integrations &amp; Tooling<small>MCP servers, LLM API clients, agentic workflows</small></span>
+        <span class="txn-id">TXN 07</span>
+        <span class="txn-name">SMCM<small>Social Media Campaign Manager for online businesses</small></span>
         <span class="txn-flip" aria-hidden="true"></span>
       </summary>
       <div class="txn-body">
-        <p class="txn-meta"><span><b>DOMAIN</b> AI ENGINEERING</span><span><b>STACK</b> PYTHON · TYPESCRIPT · MCP · LLM APIS</span><span><b>YEAR</b> 2025–2026</span><span><b>STATUS</b> ONGOING</span></p>
+        <p class="txn-meta"><span><b>DOMAIN</b> MARKETING / SAAS</span><span><b>STACK</b> PYTHON · JAVASCRIPT · DOCKER</span><span><b>YEAR</b> 2026</span><span><b>ROLE</b> SOLO</span></p>
         <p>
-          A working collection of AI infrastructure: a <strong>Material 3 MCP server</strong> that gives
-          coding agents a design-system knowledge base; <strong>freellmapi</strong>, a Dockerized client
-          and desktop app unifying free LLM APIs; an <strong>LLM-powered GitHub Action</strong> that
-          labels and assesses comments via Azure AI inference; and agentic-workflow experiments
-          (agentics, gh-aw). Capped with the <strong>AMD Developer Hackathon: ACT II</strong> on lablab.ai.
+          Plan, schedule and track social-media campaigns for online businesses — a split
+          backend + frontend app with tests and Docker Compose deployment.
         </p>
-        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/freellmapi" target="_blank" rel="noopener">→ freellmapi</a> · <a href="https://github.com/CodeStorm-Hub/ai-assessment-comment-labeler" target="_blank" rel="noopener">→ comment-labeler</a></p>
+        <p class="txn-link"><a href="https://github.com/syed-reza98/SMCM" target="_blank" rel="noopener">→ SMCM on GitHub</a></p>
       </div>
     </details>
 
     <details class="txn">
       <summary>
-        <span class="txn-id">TXN 05</span>
+        <span class="txn-id">TXN 08</span>
+        <span class="txn-name">mini-saas-pos-backend<small>Multi-tenant POS API — Laravel 12, API-first</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> POS / SAAS</span><span><b>STACK</b> PHP · LARAVEL 12 · DOCKER · PHPUNIT</span><span><b>YEAR</b> 2026</span><span><b>ROLE</b> SOLO</span></p>
+        <p>
+          A multi-tenant point-of-sale and inventory API with tenant isolation, a Postman collection,
+          API testing guide, and Docker deployment. Built API-first, not as a monolith with an API bolted on.
+        </p>
+        <p class="txn-link"><a href="https://github.com/syed-reza98/mini-saas-pos-backend" target="_blank" rel="noopener">→ mini-saas-pos-backend on GitHub</a></p>
+      </div>
+    </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 09</span>
         <span class="txn-name">F. Rahman &amp; Brothers<small>Business dashboard — revenue, stock, and operations</small></span>
         <span class="txn-flip" aria-hidden="true"></span>
       </summary>
@@ -675,7 +799,7 @@
 
     <details class="txn">
       <summary>
-        <span class="txn-id">TXN 06</span>
+        <span class="txn-id">TXN 10</span>
         <span class="txn-name">NetCon<small>ATM/CRM electronic-journal log extractor for Eastern Bank PLC</small></span>
         <span class="txn-flip" aria-hidden="true"></span>
       </summary>
@@ -692,8 +816,8 @@
 
     <details class="txn">
       <summary>
-        <span class="txn-id">TXN 07</span>
-        <span class="txn-name">Bike Helmet Detection<small>Computer-vision model · 85.3k views · 4.6k downloads on Roboflow</small></span>
+        <span class="txn-id">TXN 11</span>
+        <span class="txn-name">Bike Helmet Detection<small>Computer-vision model · 88.6k views · 4.79k downloads on Roboflow</small></span>
         <span class="txn-flip" aria-hidden="true"></span>
       </summary>
       <div class="txn-body">
@@ -715,7 +839,7 @@
 
     <details class="txn">
       <summary>
-        <span class="txn-id">TXN 08</span>
+        <span class="txn-id">TXN 12</span>
         <span class="txn-name">Quantum Superdense-Coding Defense<small>University capstone — eavesdropping prevention with Qiskit</small></span>
         <span class="txn-flip" aria-hidden="true"></span>
       </summary>
@@ -751,7 +875,7 @@
 
     <details class="txn">
       <summary>
-        <span class="txn-id">TXN 09</span>
+        <span class="txn-id">TXN 13</span>
         <span class="txn-name">SR600Mini<small>Dual-screen POS terminal firmware in embedded C</small></span>
         <span class="txn-flip" aria-hidden="true"></span>
       </summary>
@@ -767,7 +891,7 @@
 
     <details class="txn">
       <summary>
-        <span class="txn-id">TXN 10</span>
+        <span class="txn-id">TXN 14</span>
         <span class="txn-name">Allora<small>Containerized e-commerce REST API with hybrid rendering</small></span>
         <span class="txn-flip" aria-hidden="true"></span>
       </summary>
@@ -780,6 +904,26 @@
         </p>
       </div>
     </details>
+
+    <details class="txn">
+      <summary>
+        <span class="txn-id">TXN 15</span>
+        <span class="txn-name">AI Integrations &amp; Tooling<small>MCP servers, LLM API clients, agentic workflows</small></span>
+        <span class="txn-flip" aria-hidden="true"></span>
+      </summary>
+      <div class="txn-body">
+        <p class="txn-meta"><span><b>DOMAIN</b> AI ENGINEERING</span><span><b>LABEL</b> MIXED · ORIGINAL + FORK-DERIVED</span><span><b>STACK</b> PYTHON · TYPESCRIPT · MCP · LLM APIS</span><span><b>YEAR</b> 2025–2026</span><span><b>STATUS</b> ONGOING</span></p>
+        <p>
+          A working collection of AI infrastructure: a <strong>Material 3 MCP server</strong> that gives
+          coding agents a design-system knowledge base; <strong>freellmapi</strong> (org fork, upstream authors — adapted, not built from scratch), a Dockerized client
+          and desktop app unifying free LLM APIs; an <strong>LLM-powered GitHub Action</strong> (org fork, upstream authors) that
+          labels and assesses comments via Azure AI inference; and agentic-workflow experiments
+          (agentics, gh-aw). Capped with the <strong>AMD Developer Hackathon: ACT II</strong> on lablab.ai.
+        </p>
+        <p class="txn-link"><a href="https://github.com/CodeStorm-Hub/freellmapi" target="_blank" rel="noopener">→ freellmapi</a> · <a href="https://github.com/CodeStorm-Hub/ai-assessment-comment-labeler" target="_blank" rel="noopener">→ comment-labeler</a></p>
+      </div>
+    </details>
+
   </section>
 
   <!-- REC 004 · SKILLS -->
@@ -826,10 +970,10 @@
     <div class="band">
       <div class="band-grid">
         <div>
-          <h3>CodeStorm Hub</h3>
+          <h2>CodeStorm Hub</h2>
           <p>
-            The product studio I founded and lead — and where my recent work lives.
-            Flagships: <strong>StormCom</strong> (multi-tenant e-commerce) and <strong>StormERP</strong>;
+            The product studio I lead development at — and where my recent work lives.
+            Flagships: <strong>StormCom</strong> (multi-tenant e-commerce) and <strong>SheraTutor</strong> (AI board-examiner);
             2026 shipped <strong>PetFolio</strong>, <strong>Awaken</strong>, and client platforms like the
             F. Rahman &amp; Brothers dashboard, MSC real estate, and Sharothee Wedding.
           </p>
@@ -838,14 +982,13 @@
             building on the AMD AI Developer Cloud.
           </p>
           <p class="txn-link">
-            <a href="https://www.codestormhub.dev" target="_blank" rel="noopener">→ codestormhub.dev</a> ·
             <a href="https://github.com/CodeStorm-Hub" target="_blank" rel="noopener">→ github.com/CodeStorm-Hub</a>
           </p>
         </div>
         <ul class="fact-list">
           <li>REPOS ····· <b>33+</b></li>
           <li>TEAM ······ <b>~7 engineers</b></li>
-          <li>PRODUCTS ·· <b>StormCom · StormERP</b></li>
+          <li>PRODUCTS ·· <b>StormCom · SheraTutor</b></li>
           <li>SHIPPED ··· <b>PetFolio · Awaken</b></li>
           <li>FOCUS ····· <b>SaaS · Mobile · AI</b></li>
           <li>HACKATHON · <b>AMD ACT II · lablab.ai</b></li>
@@ -860,6 +1003,7 @@
       <p class="rec-id">Rec 006 / 008 · Certifications</p>
       <p class="rec-note">ORACLE ×4</p>
     </div>
+    <h2 class="rec-title">Certifications</h2>
     <div class="certs">
       <div class="cert"><b>Oracle Cloud Infrastructure</b> Solution Engineer &amp; Sales Specialist <span class="cert-yr">2023</span></div>
       <div class="cert"><b>Oracle Analytics</b> Solution Engineer Specialist <span class="cert-yr">2024</span></div>
@@ -872,10 +1016,10 @@
   <section class="rec wrap" id="notes">
     <div class="rec-head">
       <p class="rec-id">Rec 007 / 008 · Field notes</p>
-      <p class="rec-note">PENDING ENTRIES</p>
+      <p class="rec-note">TOPICS IN PROGRESS</p>
     </div>
     <div class="notes">
-      <p style="margin:0; color:var(--ink-2);">Writing queue — entries drafted, not yet posted.<span class="soon">Coming soon</span></p>
+      <p style="margin:0; color:var(--ink-2);">Writing queue — drafts in progress, not yet posted.</p>
       <ul>
         <li>Parsing multi-vendor ATM electronic journals without losing your mind</li>
         <li>Shipping Laravel to Windows Server (IIS): notes from a banking deployment</li>
@@ -927,12 +1071,11 @@
         <a href="https://orcid.org/0009-0006-5258-6789" target="_blank" rel="noopener">ORCID / 0009-0006-5258-6789</a>
       </div>
       <div>
-        <a href="https://www.codestormhub.dev" target="_blank" rel="noopener">CODESTORMHUB.DEV</a><br>
         <a href="https://universe.roboflow.com/bike-helmets/bike-helmet-detection-2vdjo" target="_blank" rel="noopener">ROBOFLOW / BIKE-HELMETS</a><br>
         <a href="https://upwork.com/freelancers/syed181" target="_blank" rel="noopener">UPWORK / SYED181</a>
       </div>
     </div>
-    <p class="eod-close">EOD ── JOURNAL OPEN FOR NEW ENTRIES · 2026 · <span class="ok">OPEN TO WORK ✓</span> · NO EXTERNAL REQUESTS · SET IN SYSTEM TYPE</p>
+    <p class="eod-close">EOD ── JOURNAL OPEN FOR NEW ENTRIES · LAST UPDATED 2026-10 · <span class="ok">OPEN TO WORK ✓</span> · ANALYTICS: MICROSOFT CLARITY · SET IN SYSTEM TYPE</p>
   </div>
 </footer>
 
@@ -948,7 +1091,7 @@
       "[2022-04  10:05:33] TXN 0002 — FULL STACK DEVELOPER · WALKINROOM · LONDON (REMOTE)",
       "[2022-10  09:12:44] TXN 0003 — SOFTWARE ENGINEER · NETWORLD TECHNOLOGY · DHAKA",
       "[2023-——  03:41:09] TXN 0004 — NETCON EJ EXTRACTOR SHIPPED · EASTERN BANK PLC",
-      "[2024-——  21:15:37] TXN 0005 — FOUNDED CODESTORM HUB · STORMCOM / STORMERP",
+      "[2024-——  21:15:37] TXN 0005 — CODESTORM HUB · LEAD DEVELOPER · STORMCOM",
       "[2026-——  11:26:48] TXN 0006 — PETFOLIO · AWAKEN · AI INTEGRATIONS — VIA CODESTORM HUB",
       "[2026-——  17:00:00] SESSION CLOSE — NETWORLD TECHNOLOGY · 4 YEARS OF BANKING SYSTEMS",
       "[2026-07  --:--:--] STATUS   — OPEN TO WORK · FULL-TIME / REMOTE / FREELANCE ✓"
@@ -982,6 +1125,59 @@
         setTimeout(tick, 500);
       }
     }
+  })();
+</script>
+
+<script>
+  (function () {
+    // Theme toggle: saved choice > system preference
+    var toggle = document.getElementById("theme-toggle");
+    function getEffectiveTheme() {
+      return document.documentElement.getAttribute("data-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    }
+    function applyTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      try { localStorage.setItem("theme", theme); } catch (e) {}
+      if (toggle) { toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false"); }
+    }
+    if (toggle) {
+      toggle.setAttribute("aria-pressed", getEffectiveTheme() === "dark" ? "true" : "false");
+      toggle.addEventListener("click", function () {
+        var next = getEffectiveTheme() === "dark" ? "light" : "dark";
+        applyTheme(next);
+      });
+    }
+    // Mobile nav
+    var navBtn = document.querySelector(".nav-toggle");
+    var nav = document.getElementById("top-nav");
+    if (navBtn && nav) {
+      function closeNav() { nav.classList.remove("open"); navBtn.setAttribute("aria-expanded", "false"); navBtn.textContent = "Menu"; }
+      navBtn.addEventListener("click", function () {
+        var open = nav.classList.toggle("open");
+        navBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        navBtn.textContent = open ? "Close" : "Menu";
+      });
+      document.addEventListener("click", function (e) {
+        if (nav.classList.contains("open") && !nav.contains(e.target) && e.target !== navBtn) { closeNav(); }
+      });
+      window.addEventListener("scroll", function () {
+        if (nav.classList.contains("open")) { closeNav(); }
+      }, { passive: true });
+      nav.addEventListener("click", function (e) {
+        if (e.target.tagName === "A") { closeNav(); }
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && nav.classList.contains("open")) { closeNav(); navBtn.focus(); }
+      });
+    }
+    // Clarity events only: no personal data in event names
+    function clarityEvent(name) { try { if (window.clarity) { window.clarity("event", name); } } catch (e) {} }
+    document.querySelectorAll(".cta-row a").forEach(function (a) {
+      a.addEventListener("click", function () { clarityEvent("cta_click"); });
+    });
+    document.querySelectorAll("details.txn").forEach(function (d) {
+      d.addEventListener("toggle", function () { if (d.open) { clarityEvent("project_expand"); } });
+    });
   })();
 </script>
 </body>

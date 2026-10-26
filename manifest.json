@@ -1,0 +1,15 @@
+{
+  "name": "Syed Salman Reza \u2014 Software Engineer",
+  "short_name": "Syed Salman Reza",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F2EDE1",
+  "theme_color": "#F2EDE1",
+  "icons": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
