@@ -101,7 +101,7 @@
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 84px; color-scheme: light dark; }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; color-scheme: light dark; }
   :root[data-theme="light"] { color-scheme: light; }
   :root[data-theme="dark"] { color-scheme: dark; }
   body {
@@ -260,6 +260,7 @@
     font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
     font-size: 12px; color: var(--ink-3); text-align: right;
   }
+  h2.section-title { font-size: clamp(30px, 5vw, 52px); font-weight: 800; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 26px; text-wrap: balance; }
   h2.rec-title {
     font-size: clamp(30px, 4.6vw, 52px); font-weight: 800;
     letter-spacing: -0.025em; line-height: 1.02; text-transform: uppercase;
@@ -309,6 +310,7 @@
   }
   details.txn summary::-webkit-details-marker { display: none; }
   details.txn summary:hover { background: var(--rule-soft); }
+  details.txn[open] summary { background: var(--surface); }
   .txn-id {
     font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
     font-size: 12.5px; color: var(--accent); letter-spacing: 0.08em;
@@ -318,6 +320,8 @@
   .txn-flip {
     font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
     font-size: 18px; color: var(--ink-3); align-self: center;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border: 1px solid var(--rule); border-radius: 50%;
   }
   details.txn[open] .txn-flip { color: var(--accent); }
   details.txn[open] .txn-flip::before { content: "−"; }
@@ -370,7 +374,7 @@
   /* codestorm band */
   .band { background: var(--band); border: 1px dashed var(--rule); border-radius: 6px; padding: 34px 32px; }
   .band-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 36px; }
-  .band h3 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 12px; text-transform: uppercase; }
+  .band h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 12px; text-transform: uppercase; }
   .band p { color: var(--ink-2); margin: 0 0 12px; max-width: 58ch; }
   .band .fact-list { border-color: var(--rule); }
 
@@ -414,7 +418,7 @@
     font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, Menlo, monospace;
     font-size: 12.5px; line-height: 2.1; color: var(--ink-2);
   }
-  .eod a { color: var(--ink-2); }
+  .eod a { color: var(--ink-2); display: inline-block; padding: 6px 2px; }
   .eod a:hover { color: var(--accent); }
   .eod-close { margin-top: 22px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
   .eod-close .ok { color: var(--accent); }
@@ -427,11 +431,18 @@
     .hero { padding-top: 52px; }
     .top-extra { display: none; }
   }
-  @media (max-width: 700px) {
+  @media (max-width: 900px) {
     nav.top-nav { display: none; }
-    nav.top-nav.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); border-bottom: 1px dashed var(--rule); padding: 8px 24px 16px; gap: 4px; }
+    nav.top-nav.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--surface); border: 1px solid var(--rule); border-top: none; border-radius: 0 0 6px 6px; box-shadow: 0 12px 32px rgba(0,0,0,0.18); padding: 8px 24px 16px; gap: 0; }
+    nav.top-nav.open a { border-bottom: 1px dashed var(--rule); padding: 12px 2px; }
+    nav.top-nav.open a:last-child { border-bottom: none; }
     .nav-toggle { display: inline-block; }
     .top-in { flex-wrap: wrap; }
+    .rec-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .rec-note { text-align: left; }
+    .cta-row { flex-direction: column; }
+    .cta-row .btn { width: 100%; text-align: center; }
+    .ticker-log { min-height: calc(1.85em * 6); }
   }
   @media (max-width: 480px) {
     .ticker-head span:last-child { display: none; }
@@ -455,26 +466,28 @@
 
 <noscript><style>.cursor { display: none; }</style></noscript>
 
-<a class="skip" href="#about">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
   <div class="wrap top-in">
     <span class="top-id"><b>SYED SALMAN REZA</b><span class="top-extra"> · EJ-LOG/CAREER · DHAKA +06:00</span></span>
     <span class="top-right">
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="top-nav">Menu</button>
-      <button class="theme-toggle" type="button" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark and light theme">Theme</button>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-pressed="false" aria-label="Theme: light. Click to switch theme.">Light</button>
       <nav class="top-nav" id="top-nav" aria-label="Sections">
+        <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#codestorm">CodeStorm</a>
+        <a href="#hire">Hire</a>
       </nav>
       <a class="chip" href="#hire"><span class="pulse" aria-hidden="true"></span>Open to work</a>
     </span>
   </div>
 </header>
 
-<main>
+<main id="main">
   <!-- REC 000 · HERO -->
   <section class="hero wrap">
     <p class="eyebrow">Electronic journal · Career ledger of</p>
@@ -804,7 +817,7 @@
 <details class="txn">
       <summary>
         <span class="txn-id">TXN 11</span>
-        <span class="txn-name">Bike Helmet Detection<small>Computer-vision model · 85.3k views · 4.6k downloads on Roboflow</small></span>
+        <span class="txn-name">Bike Helmet Detection<small>Computer-vision model · 88.6k views · 4.79k downloads on Roboflow</small></span>
         <span class="txn-flip" aria-hidden="true"></span>
       </summary>
       <div class="txn-body">
@@ -976,7 +989,7 @@
     <div class="band">
       <div class="band-grid">
         <div>
-          <h3>CodeStorm Hub</h3>
+          <h2>CodeStorm Hub</h2>
           <p>
             The product studio I lead development at — and where my recent work lives.
             Flagships: <strong>StormCom</strong> (multi-tenant e-commerce) and <strong>SheraTutor</strong> (AI board-examiner);
@@ -988,7 +1001,6 @@
             building on the AMD AI Developer Cloud.
           </p>
           <p class="txn-link">
-            <a href="https://www.codestormhub.dev" target="_blank" rel="noopener">→ codestormhub.dev</a> ·
             <a href="https://github.com/CodeStorm-Hub" target="_blank" rel="noopener">→ github.com/CodeStorm-Hub</a>
           </p>
         </div>
@@ -1010,6 +1022,7 @@
       <p class="rec-id">Rec 006 / 008 · Certifications</p>
       <p class="rec-note">ORACLE ×4</p>
     </div>
+    <h2 class="section-title">Certifications</h2>
     <div class="certs">
       <div class="cert"><b>Oracle Cloud Infrastructure</b> Solution Engineer &amp; Sales Specialist <span class="cert-yr">2023</span></div>
       <div class="cert"><b>Oracle Analytics</b> Solution Engineer Specialist <span class="cert-yr">2024</span></div>
@@ -1077,7 +1090,6 @@
         <a href="https://orcid.org/0009-0006-5258-6789" target="_blank" rel="noopener">ORCID / 0009-0006-5258-6789</a>
       </div>
       <div>
-        <a href="https://www.codestormhub.dev" target="_blank" rel="noopener">CODESTORMHUB.DEV</a><br>
         <a href="https://universe.roboflow.com/bike-helmets/bike-helmet-detection-2vdjo" target="_blank" rel="noopener">ROBOFLOW / BIKE-HELMETS</a><br>
         <a href="https://upwork.com/freelancers/syed181" target="_blank" rel="noopener">UPWORK / SYED181</a>
       </div>
@@ -1142,12 +1154,13 @@
     function applyTheme(theme) {
       document.documentElement.setAttribute("data-theme", theme);
       try { localStorage.setItem("theme", theme); } catch (e) {}
-      if (toggle) { toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false"); toggle.textContent = theme === "dark" ? "Light" : "Dark"; }
+      if (toggle) { toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false"); toggle.textContent = theme === "dark" ? "Dark" : "Light"; toggle.setAttribute("aria-label", "Theme: " + theme + ". Click to switch theme."); }
     }
     if (toggle) {
       var current = document.documentElement.getAttribute("data-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
       toggle.setAttribute("aria-pressed", current === "dark" ? "true" : "false");
-      toggle.textContent = current === "dark" ? "Light" : "Dark";
+      toggle.textContent = current === "dark" ? "Dark" : "Light";
+      toggle.setAttribute("aria-label", "Theme: " + current + ". Click to switch theme.");
       toggle.addEventListener("click", function () {
         var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
         applyTheme(next);
@@ -1157,15 +1170,23 @@
     var navBtn = document.querySelector(".nav-toggle");
     var nav = document.getElementById("top-nav");
     if (navBtn && nav) {
+      function closeNav() { nav.classList.remove("open"); navBtn.setAttribute("aria-expanded", "false"); navBtn.textContent = "Menu"; }
       navBtn.addEventListener("click", function () {
         var open = nav.classList.toggle("open");
         navBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        navBtn.textContent = open ? "Close" : "Menu";
       });
+      document.addEventListener("click", function (e) {
+        if (nav.classList.contains("open") && !nav.contains(e.target) && e.target !== navBtn) { closeNav(); }
+      });
+      window.addEventListener("scroll", function () {
+        if (nav.classList.contains("open")) { closeNav(); }
+      }, { passive: true });
       nav.addEventListener("click", function (e) {
-        if (e.target.tagName === "A") { nav.classList.remove("open"); navBtn.setAttribute("aria-expanded", "false"); }
+        if (e.target.tagName === "A") { closeNav(); }
       });
       document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && nav.classList.contains("open")) { nav.classList.remove("open"); navBtn.setAttribute("aria-expanded", "false"); navBtn.focus(); }
+        if (e.key === "Escape" && nav.classList.contains("open")) { closeNav(); navBtn.focus(); }
       });
     }
     // Clarity events only: no personal data in event names
