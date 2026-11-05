@@ -1,8 +1,8 @@
-name: Deploy static site to GitHub Pages
+name: Deploy site to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "3D-portfolio"]
   workflow_dispatch:
 
 permissions:
@@ -21,13 +21,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site with Vite
+        run: npm run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: './dist'
 
   deploy:
     environment:
