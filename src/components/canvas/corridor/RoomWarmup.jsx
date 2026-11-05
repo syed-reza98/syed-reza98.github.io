@@ -59,17 +59,20 @@ const RoomWarmup = ({ onWarmupComplete, isLowTier }) => {
             }
 
             // Force compile all shaders in the scene (including warm-up rooms)
-            // Use 2026 compileAsync to avoid blocking the main thread!
+            // Use 2026 compileAsync with a 1.2s timeout fallback so headless/software WebGL never stalls
             if (gl.compileAsync) {
-                gl.compileAsync(scene, camera, scene)
+                const compilePromise = gl.compileAsync(scene, camera, scene);
+                const timeoutPromise = new Promise((resolve) => setTimeout(resolve, 1200));
+                Promise.race([compilePromise, timeoutPromise])
                     .then(finishWarmup)
                     .catch((err) => {
-                        console.error('Async compilation failed, falling back to sync', err);
-                        gl.compile(scene, camera);
+                        console.warn('Async compilation note:', err);
                         finishWarmup();
                     });
             } else {
-                gl.compile(scene, camera);
+                try {
+                    gl.compile(scene, camera);
+                } catch (e) {}
                 finishWarmup();
             }
         }

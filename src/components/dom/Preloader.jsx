@@ -301,6 +301,17 @@ const Preloader = ({ onComplete, ready }) => {
     }
   }, [ready]);
 
+  // Safety fallback: if ready never resolves or on slow SwiftShader, force exit after 3s
+  useEffect(() => {
+    const safetyTimer = setTimeout(() => {
+      if (!exitStarted.current) {
+        exitStarted.current = true;
+        startExit();
+      }
+    }, 3000);
+    return () => clearTimeout(safetyTimer);
+  }, []);
+
   const startExit = () => {
     exitStarted.current = true;
 
